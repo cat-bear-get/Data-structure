@@ -198,18 +198,18 @@ bool Merge(SqList A, SqList B, SqList &C)
  * @param right 右边的顺序表
  * @param arraySize A数组长度
  */
-void Reverse(DataType *A,int left,int right,int arraySize)
+void Reverse(DataType *A, int left, int right, int arraySize)
 {
-    if (left>=right||right>=arraySize)
+    if (left >= right || right >= arraySize)
     {
         return;
     }
-    int mid=(left+right)/2;
-    for (int i = 0; i <= mid-left ; i++)
+    int mid = (left + right) / 2;
+    for (int i = 0; i <= mid - left; i++)
     {
-        DataType temp=A[left+i];
-        A[left+i]=A[right-i];
-        A[right-i]=temp;
+        DataType temp = A[left + i];
+        A[left + i] = A[right - i];
+        A[right - i] = temp;
     }
 }
 /**
@@ -220,20 +220,50 @@ void Reverse(DataType *A,int left,int right,int arraySize)
  * @param n 线性表(2)的长度
  * @param arraySize 数组的长度
  */
-void Exchange(DataType *A,int m,int n,int arraySize)
+void Exchange(DataType *A, int m, int n, int arraySize)
 {
-    Reverse(A,0,m+n-1,arraySize);
-    Reverse(A,0,n-1,arraySize);
-    Reverse(A,n,m+n-1,arraySize);
+    Reverse(A, 0, m + n - 1, arraySize);
+    Reverse(A, 0, n - 1, arraySize);
+    Reverse(A, n, m + n - 1, arraySize);
 }
 /**
  * @brief exp2.2.3-9:线性表（a1,a2,a3,…,an）中的元素递増有序且按顺序存储于计算机内。
  * 要求设计一个算法，完成用最少时间在表中查找数值为x的元素,若找到,则将其与后继元素位置相交换,
  * 若找不到,则将其插入表中并使表中元素仍递增有序。
- *
+ * @param A 自定义的线性表
+ * @param n 线性表的长度
+ * @param x 待查找的元素
  */
-
-void SearchExchangeInsert()
+bool SearchExchangeInsert(int *A, int n, int x)
 {
-    
+    if (n > MaxSize)
+    {
+        return false;
+    }
+    int low = 0, high = n - 1, mid, i;
+    while (low <= high)
+    {
+        mid = (low + high) / 2;
+        if (A[mid] == x)
+            break;
+        else if (A[mid] < x)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    if (A[mid] == x && mid != n - 1)
+    {
+        int temp;
+        temp = A[mid];
+        A[mid] = A[mid + 1];
+        A[mid + 1] = temp;
+    }
+    if (low > high)
+    {
+        for (i = n - 1; i > high; i--)
+        {
+            A[i + 1] = A[i];
+        }
+        A[i + 1] = x;
+    }
 }

@@ -12,3 +12,4 @@ bool Del_s_t(SqList &L, int s, int t);
 bool Delete_Same(SqList &L);
 bool Merge(SqList A, SqList B, SqList &C);
 void Exchange(DataType *A,int m,int n,int arraySize);
+bool SearchExchangeInsert(int *A, int n, int x);
