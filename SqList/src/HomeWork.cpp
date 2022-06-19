@@ -202,27 +202,6 @@ bool Merge(SqList A, SqList B, SqList &C)
     return true;
 }
 /**
- * @brief exp2.2.3-8：例题的实现方法函数
- * @param A 一个一维数组
- * @param left 左边的顺序表
- * @param right 右边的顺序表
- * @param arraySize A数组长度
- */
-void Reverse(DataType *A, int left, int right, int arraySize)
-{
-    if (left >= right || right >= arraySize)
-    {
-        return;
-    }
-    int mid = (left + right) / 2;
-    for (int i = 0; i <= mid - left; i++)
-    {
-        DataType temp = A[left + i];
-        A[left + i] = A[right - i];
-        A[right - i] = temp;
-    }
-}
-/**
  * @brief exp2.2.3-8:已知在一维数组A[m+n]中依次存放两个线性表（a1,a2,a3,…,am）和（b1,b2,b3,…,bn)。
  * 編写一个函数,将数组中两个顺序表的位置互换,即将(b1,b2,b3,…,bn)放在(a1,a2,a3,…,am)的前面。
  * @param A 一个一维数组
