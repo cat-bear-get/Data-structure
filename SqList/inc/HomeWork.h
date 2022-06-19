@@ -11,7 +11,6 @@
  */
 #include "SqList.h"
 
-typedef int DataType;
 
 bool Del_Min(SqList &L, int &value);
 void Reverse(SqList &L);

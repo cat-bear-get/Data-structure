@@ -69,7 +69,14 @@ void TestSqList()
     }
     printf("#################################\n");
 
-    
+    int value7[]={1,2,3,4,5,6,7,9,10};
+    //SearchExchangeInsert(value7,9,8);
+    printf("查找后的数组\n");
+    for (int i = 0; i < 9; i++)
+    {
+        printf("value7[%d]=%d\n",i,value7[i]);
+    }
+    printf("#################################\n");
 }
 int main()
 {
