@@ -20,3 +20,4 @@ project(DataStructure)
 # Add sub directories
 add_subdirectory(test)
 add_subdirectory(SqList)
+add_subdirectory(LinkList)
