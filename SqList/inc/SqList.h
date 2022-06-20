@@ -17,4 +17,3 @@ int GetElem(SqList &L, int i);
 int LocateElem(SqList &L, int e);
 bool PutIntoSqList(SqList &L, int *value, int value_length);
 void PrintSqList(SqList L, char const *);
-void Reverse(DataType *A, int left, int right, int arraySize);

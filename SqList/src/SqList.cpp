@@ -114,27 +114,7 @@ bool PutIntoSqList(SqList &L, int *value, int value_length)
     }
     return true;
 }
-/**
- * @brief 求顺序表的逆置(abcdefg->gfedcba)
- * @param A 一个一维数组
- * @param left 左边的顺序表
- * @param right 右边的顺序表
- * @param arraySize A数组长度
- */
-void Reverse(DataType *A, int left, int right, int arraySize)
-{
-    if (left >= right || right >= arraySize)
-    {
-        return;
-    }
-    int mid = (left + right) / 2;
-    for (int i = 0; i <= mid - left; i++)
-    {
-        DataType temp = A[left + i];
-        A[left + i] = A[right - i];
-        A[right - i] = temp;
-    }
-}
+
 /**
  * @brief 打印顺序表中的元素
  * @param L 自定义的顺序表

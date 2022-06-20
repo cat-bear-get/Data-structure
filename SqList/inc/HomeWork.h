@@ -22,3 +22,5 @@ bool Delete_Same(SqList &L);
 bool Merge(SqList A, SqList B, SqList &C);
 void Exchange(DataType *A,int m,int n,int arraySize);
 bool SearchExchangeInsert(int *A, int n, int x);
+void Converse(int *R,int n,int p);
+int M_Search(int *A,int *B, int n);

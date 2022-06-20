@@ -1,12 +1,12 @@
 /**
  * @file HomeWork.cpp
  * @author your name (you@domain.com)
- * @brief 
+ * @brief
  * @version 0.1
  * @date 2022-06-19
- * 
+ *
  * @copyright Copyright (c) 2022
- * 
+ *
  */
 #include "HomeWork.h"
 
@@ -202,6 +202,27 @@ bool Merge(SqList A, SqList B, SqList &C)
     return true;
 }
 /**
+ * @brief 第八题的辅助函数
+ * @param A 一个一维数组
+ * @param left 左边的顺序表
+ * @param right 右边的顺序表
+ * @param arraySize A数组长度
+ */
+void Reverse(DataType *A, int left, int right, int arraySize)
+{
+    if (left >= right || right >= arraySize)
+    {
+        return;
+    }
+    int mid = (left + right) / 2;
+    for (int i = 0; i <= mid - left; i++)
+    {
+        DataType temp = A[left + i];
+        A[left + i] = A[right - i];
+        A[right - i] = temp;
+    }
+}
+/**
  * @brief exp2.2.3-8:已知在一维数组A[m+n]中依次存放两个线性表（a1,a2,a3,…,am）和（b1,b2,b3,…,bn)。
  * 編写一个函数,将数组中两个顺序表的位置互换,即将(b1,b2,b3,…,bn)放在(a1,a2,a3,…,am)的前面。
  * @param A 一个一维数组
@@ -256,4 +277,82 @@ bool SearchExchangeInsert(int *A, int n, int x)
         A[i + 1] = x;
     }
 }
-
+void Reverse(int *R, int form, int to)
+{
+    if (form > to)
+        return;
+    int i, temp;
+    for (i = 0; i < (to - form) / 2; i++)
+    {
+        temp = R[form + i];
+        R[form + i] = R[to - i];
+        R[to - i] = temp;
+    }
+}
+/**
+ * @brief 【2010统考真题】设将n(n>1)个整数存放到一维数组R中。设计一个在时间和空间两方面都尽可能高效的算法。
+ * 将R中保存的序列循环左移p(0<p<n)个位置，即将R中的数据由(X,X,…,Xn-1)变换为(Xp,Xp+l,…,X0,X1,Xp-1)。要求:
+ *
+ * 1)给出算法的基本设计思想。
+ * 2）根据设计思想，采用C或C++或Java语言描述算法，关键之处给出注释。
+ * 3）说明你所设计算法的时间复杂度和空间复杂度。
+ * @param R 自定义一维数组R
+ * @param n 数组中的元素个数
+ * @param p 左移的位数
+ */
+void Converse(int *R, int n, int p)
+{
+    Reverse(R, 0, p - 1);
+    Reverse(R, p, n - 1);
+    Reverse(R, 0, n - 1);
+}
+/**
+ * @brief 【2011统考真题】一个长度为L(L≥1)的升序序列S，处在第(L/2)个位置的数称为S的中位数。
+ * 例如，若序列S1=(11,13,15,17,19)，则S的中位数是15，两个序列的中位数是含它们所有元素的升序序列的中位数。
+ * 例如，若S2=(2,4,6,8,20)，则S1和S2的中位数是11。现在有两个等长升序序列A和B，
+ * 试设计一个在时间和空间两方面都尽可能高效的算法，找出两个序列A和B的中位数。要求:
+ * 1）给出算法的基本设计思想。
+ * 2）根据设计思想，采用C或C++或Java语言描述算法，关键之处给出注释。
+ * 3）说明你所设计算法的时间复杂度和空间复杂度。
+ * @param A 序列1
+ * @param B 序列2
+ * @param n 序列的长度
+ * @return int 
+ */
+int M_Search(int *A,int *B, int n)
+{
+    int s1=0,d1=n-1,m1,s2=0,d2=n-1,m2;
+    while (s1!=d1||s2!=d2)
+    {
+        m1=(s1+d1)/2;
+        m2=(s2+d2)/2;
+        if (A[m1]==B[m2])
+        {
+            return A[m1];
+        }
+        if (A[m1]<B[m2])
+        {
+            if ((s1+d1)%2==0)
+            {
+                s1=m1;
+                d2=m2;
+            }
+            else{
+                s1=m1+1;
+                d2=m2;
+            }
+        }
+        else{
+            if ((s2+d2)%2==0)
+            {
+                d1=m1;
+                s2=m2;
+            }
+            else{
+                d1=m1;
+                s2=m2+1;
+            }
+        }
+    }
+    return A[s1]<B[s2]?A[s1]:B[s2];
+}
